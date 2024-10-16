@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Consolas, monospace;
+            background-color: #f0f0f0; /* Smokey white */
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        p {
+            margin: 20px 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #fff;
+            border: 1px solid #333;
+            color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #333;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Homepage</h1>
+    <p>Hello {{ firstname }}, how are you?</p>
+
+    <p>In views.py, you can see how to create the variable.</p>
+    <p>In view.html, you can see how to use the variable.</p>
+    <button><a href="{% url 'index' %}">Back</a></button>
+</body>
+</html>

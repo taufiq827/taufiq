@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor</title>
+</head>
+
+<body>
+    <form action="" method = "post">
+        {%csrf_token%}
+        Enter Mentor ID <input type = "text" name= "menid"><br><br>
+        Enter Mentor Name <input type = "text" name= "menname"><br><br>
+        Enter Mentor Room Number <input type = "text" name= "menroomno"><br><br>
+        <input type="submit" value = "SAVE"><br><br>
+        </form>
+
+        <table border = "1">
+            <thead>
+                <tr>
+                    <th>Mentor ID</th>
+                    <th>Mentor Name</th>
+                    <th>Mentor Room Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mentor in mentor %}
+                <tr>
+                    <td>{{mentor.menid}}</td>
+                    <td>{{mentor.menname}}</td>
+                    <td>{{mentor.menroomno}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+</body>
+</html>

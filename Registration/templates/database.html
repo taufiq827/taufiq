@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolej Profesional MARA Indera Mahkota - Tables</title>
+    <style>
+        body {
+            font-family: Consolas, monospace;
+            background-color: #f0f0f0; /* Smokey white */
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #fff;
+            border: 1px solid #333;
+            color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #333;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Student Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Phone Number</th>
+                <th>Student Email</th>
+                <th>Student Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in student %}
+            <tr>
+                <td>{{ x.student_id }}</td>
+                <td>{{ x.student_name }}</td>
+                <td>{{ x.student_phone }}</td>
+                <td>{{ x.student_email }}</td>
+                <td>{{ x.stud_status }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No students available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Book Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Published Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in book %}
+            <tr>
+                <td>{{ x.book_id }}</td>
+                <td>{{ x.title }}</td>
+                <td>{{ x.author }}</td>
+                <td>{{ x.published_year }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No books available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Borrowing Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Borrow ID</th>
+                <th>Borrow Date</th>
+                <th>Return Date</th>
+                <th>Book ID</th>
+                <th>Student ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in borrowing %}
+            <tr>
+                <td>{{ x.borrow_id }}</td>
+                <td>{{ x.borrow_date }}</td>
+                <td>{{ x.return_date }}</td>
+                <td>{{ x.book_id_id }}</td>
+                <td>{{ x.student_id_id }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No borrow records available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <button><a href="{% url 'index' %}">Back</a></button>
+</body>
+</html>

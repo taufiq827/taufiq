@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE</title>
+</head>
+<body>
+    <body>
+        <h1>Kolej Profesional MARA Indera Mahkota</h1>
+        <h1>Update Course</h1>
+    
+        <form action="{% url 'save_update_course' code %}" method="POST">
+            {%csrf_token%}
+                Course Code: <input type="text" name="code" value="{{course.code}}" disabled="false"><br><br>
+                Course Decription: <input type="text" name="desc" value="{{course.description}}"><br><br>
+                <button type="submit">Save</button>
+        </form>
+        <br><br>
+        <a href="/Kpm_IM/course/">Back</a>
+    </body>
+</body>
+</html>

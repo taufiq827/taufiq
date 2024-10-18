@@ -1,0 +1,1 @@
+web: gunicorn ICS2308008_Aiman.wsgi --log-file -

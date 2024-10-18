@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,11 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+io%p6%n%@7#3bqw^fb(8b^y!)azl!w8o03sy6_$ass$5ws(3d'
-
+#SECRET_KEY = 'django-insecure-+io%p6%n%@7#3bqw^fb(8b^y!)azl!w8o03sy6_$ass$5ws(3d'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','c5$$luvwbghtldt&d5(5)pjb2(te5hg9icv7v=vwqr=yx)905+')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
+#DEBUG = True
+DEBUG=os.environ.get('DJANGO_DEBUG','') != 'False'
 ALLOWED_HOSTS = []
 
 
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'ICS2308008_Aiman.urls'
@@ -116,9 +119,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+#The absolute path to the directory where collected
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+#The URL to use when reffering to static files (where they will be served from)
 STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Update database configuration from $DATABASE_URL.
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
